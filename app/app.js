@@ -1,17 +1,8 @@
 const express = require('express');
-const client = require('prom-client');
-
 const app = express();
-const collectDefaultMetrics = client.collectDefaultMetrics;
-collectDefaultMetrics();
 
 app.get('/', (req, res) => {
-  res.send('DevOps Pipeline Working ');
-});
-
-app.get('/metrics', async (req, res) => {
-  res.set('Content-Type', client.register.contentType);
-  res.end(await client.register.metrics());
+  res.send('DevOps Pipeline Working');
 });
 
 app.listen(3000, () => {
